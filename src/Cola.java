@@ -1,5 +1,8 @@
+import java.sql.Array;
+
 public class Cola<T> {
 
+    private int size = 0;
     private int max;
     private T[] cola;
     private int inicio;
@@ -22,6 +25,7 @@ public class Cola<T> {
     public void insertar(T data) {
         if (fin < max) {
             fin++;
+            size++;
             cola[fin] = data;
 
             if (fin == 0) {
@@ -29,6 +33,10 @@ public class Cola<T> {
             }
         } else
             System.out.println("desbordamiento");
+    }
+
+    public int size() {
+        return size;
     }
 
     public T eliminar() {
@@ -41,6 +49,8 @@ public class Cola<T> {
                 fin = -1;
             } else
                 inicio++;
+
+            size--;
         } else
             System.out.println("Subdesbordamiento");
 
